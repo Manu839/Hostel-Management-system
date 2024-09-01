@@ -43,6 +43,9 @@ body {
   font-size: 23px;
   margin: 30px 0;
 }
+.join {
+  margin-top: 10px;
+}
 
 .welcome .main-container .left-container div button {
   /* position: absolute; */

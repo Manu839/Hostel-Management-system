@@ -1,7 +1,6 @@
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv").config();
-
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -15,13 +14,13 @@ const connectDB = require("./config/db");
 connectDB();
 
 // Routes
-const roomInquiryRoutes = require("../MedHouse-API/routes/roomInquiryRoutes");
-const accommodation = require("../MedHouse-API/routes/accommodationRoutes");
-const cleaning = require("../MedHouse-API/routes/cleaningRoutes");
-const medical = require("../MedHouse-API/routes/medicalRoutes");
-const clearance = require("../MedHouse-API/routes/clearanceRoutes");
-const leave = require("../MedHouse-API/routes/leaveRoutes");
-const user = require("../MedHouse-API/routes/userRoutes");
+const roomInquiryRoutes = require("./routes/roomInquiryRoutes");
+const accommodation = require("./routes/accommodationRoutes");
+const cleaning = require("./routes/cleaningRoutes");
+const medical = require("./routes/medicalRoutes");
+const clearance = require("./routes/clearanceRoutes");
+const leave = require("./routes/leaveRoutes");
+const user = require("./routes/userRoutes");
 
 app.use("/api/inquiries", roomInquiryRoutes);
 app.use("/api/accommodation", accommodation);

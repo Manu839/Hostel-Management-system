@@ -11,11 +11,9 @@ const Welcome = () => {
         <div className="left-container">
           <h1>Welcome</h1>
           <p>to Hostel House, where we prioritize your comfort and convenience come first. We offer 24/7 medical support, efficient room cleaning, and personalized request management to ensure a seamless living experience. Our user-friendly platform provides real-time updates and fosters community engagement, making hostel life easy and enjoyable. 
+            <div className="join">
             <br></br>Join us today and discover the best in hostel living. 
-
-
-
-
+            </div>
 
 </p>
         </div>
