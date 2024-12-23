@@ -1,41 +1,44 @@
-🏨 Hostel Management System
-The Hostel Management System is a comprehensive web application designed to streamline hostel operations. It includes features like room allocation, inquiries, medical assistance, complaint tracking, and room service management.
+# 🏨 Hostel Management System
 
-✨ Features
-Room Allocation: Manage room assignments effectively.
-Room Inquiries: Handle inquiries regarding room availability.
-Medical Assistance: Track and log medical requirements.
-Complaint System: File and resolve complaints efficiently.
-Room Service Management: Request and manage room services with ease.
-Authentication: Secure login for users.
-Role-Based Access: Custom features for admins, staff, and residents.
-Responsive UI: A clean and intuitive interface for all devices.
-🤖 Technologies
+`Hostel Management System` is a comprehensive web application designed to streamline hostel operations. It includes features like room allocation, inquiries, medical assistance, complaint tracking, and room service management.
+## ✨ Features
 
-This project utilizes:
+- **Room Allocation**: Efficiently assign rooms based on availability and preferences.  
+- **Room Inquiries**: Handle inquiries about room availability and details.  
+- **Medical Assistance**: Log and track residents' medical needs.  
+- **Complaint System**: File and resolve complaints efficiently.  
+- **Room Service Management**: Manage room service requests with ease.  
+- **Authentication**: Secure user login and role-based access.  
+- **Responsive UI**: User-friendly design adaptable to all device types.
 
-Frontend:
+## 🤖 Technologies Used
 
-React.js for the user interface.
-CSS Modules for modular and maintainable styling.
-React Router for seamless navigation.
+`Hostel Management System` is built using the following technologies:
 
-Backend:
+- **React.js**: A JavaScript library for building dynamic user interfaces.  
+- **CSS Modules**: For modular and maintainable styling of React components.  
+- **Node.js**: JavaScript runtime for backend operations.  
+- **Express.js**: A web framework for creating RESTful APIs.  
+- **MongoDB**: A NoSQL database for storing all system data.  
+- **Firebase**: For authentication and real-time data handling.  
+- **Axios**: For client-server communication.  
+- **React Router**: For handling routing in the application.  
+- **dotenv**: For managing environment variables.  
+- **CORS**: To handle cross-origin requests in the browser.  
+- **Nodemon**: Automatically restarts the server when code changes are detected.
 
-Node.js with Express.js for API creation.
-MongoDB for data storage.
+## ✨ Prerequisites
 
-Additional Tools:
+Before getting started, ensure you have the following installed:
 
-Firebase for secure user authentication.
-Axios for client-server communication.
-dotenv for environment variable management.
-CORS for handling cross-origin requests.
-Nodemon for automatic server restarts during development.
+- **Node.js**: Download and install Node.js from the official [website](https://nodejs.org).  
+- **MongoDB**: Install and configure MongoDB locally or use a cloud service.  
+- **Firebase account**: Create a Firebase account and set up a project.
 
-✨ Prerequisites
-Before running this project, ensure you have the following installed:
+## 💻 Getting Started
 
-Node.js
-MongoDB
-A Firebase account
+To run the `Hostel Management System` locally, follow these steps:
+
+1. **Clone the repository**:  
+   ```bash
+   git clone https://github.com/your-username/hostel-management-system.git
