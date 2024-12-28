@@ -3,7 +3,7 @@ import axios from "axios";
 import "./AttendeeTable.css";
 import Swal from "sweetalert2";
 import emailjs from "emailjs-com";
-emailjs.init("McyT0cwVhQOXgog9F");
+emailjs.init(process.env.REACT_APP_EMAILJS_USER_ID);
 
 function LeaveRequestTable() {
   const [leaveRequests, setLeaveRequests] = useState([]);
@@ -70,8 +70,9 @@ function LeaveRequestTable() {
   };
 
   const sendEmail = (toEmail, subject, description) => {
-    const emailServiceId = "service_dab7f58"; // Replace with your Email.js service ID
-    const templateId = "template_b5hpmrk"; // Replace with your Email.js template ID
+    const emailServiceId = process.env.REACT_APP_EMAILJS_SERVICE_ID;
+    const templateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
+    
 
     emailjs
       .send(emailServiceId, templateId, {

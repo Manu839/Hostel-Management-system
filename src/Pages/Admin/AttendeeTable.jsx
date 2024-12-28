@@ -3,7 +3,7 @@ import axios from "axios";
 import "./AttendeeTable.css";
 import Swal from "sweetalert2";
 import emailjs from "emailjs-com";
-emailjs.init("McyT0cwVhQOXgog9F");
+emailjs.init(process.env.REACT_APP_EMAILJS_USER_ID);
 
 function AttendeeTable() {
   const [attendees, setAttendees] = useState([]);
@@ -13,7 +13,6 @@ function AttendeeTable() {
   const [description, setDescription] = useState("");
 
   useEffect(() => {
-    // Fetch data from the API endpoint
     axios
       .get(`${process.env.REACT_APP_API_BASE_URL}/api/accommodation`)
       .then((response) => {
@@ -23,14 +22,14 @@ function AttendeeTable() {
         console.error("Error fetching data: ", error);
       });
   }, []);
-  
 
   const handleSendEmail = () => {
-    const emailServiceId = "service_dab7f58"; // Replace with your Email.js service ID
+    const emailServiceId = process.env.REACT_APP_EMAILJS_SERVICE_ID; 
+    const emailTemplateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID; 
+
     console.log("Sending email to:", selectedAttendee.emailA);
-    // Send email using Email.js
     emailjs
-      .send(emailServiceId, "template_hgm27f4", {
+      .send(emailServiceId, emailTemplateId, {
         to_email: selectedAttendee.emailA,
         subject: subject,
         description: description,
