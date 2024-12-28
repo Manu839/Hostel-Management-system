@@ -10,11 +10,10 @@ function MedicalServiceTable() {
   const [studentEmail, setStudentEmail] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [requestStatus, setRequestStatus] = useState("");
-
   useEffect(() => {
     // Fetch data from the API endpoint
     axios
-      .get("http://localhost:5000/api/medical")
+      .get(`${process.env.REACT_APP_API_BASE_URL}/api/medical`)
       .then((response) => {
         setMedicalServiceRequests(response.data);
       })
@@ -22,20 +21,23 @@ function MedicalServiceTable() {
         console.error("Error fetching data: ", error);
       });
   }, []);
-
+  
   const handleStatusChange = async (id, newStatus) => {
     try {
       // Update the status of the medical service request in the backend
-      await axios.patch(`http://localhost:5000/api/medical/${id}/status`, {
-        status: newStatus,
-      });
-
+      await axios.patch(
+        `${process.env.REACT_APP_API_BASE_URL}/api/medical/${id}/status`,
+        {
+          status: newStatus,
+        }
+      );
+  
       // Set the request status for sending appropriate email message
       setRequestStatus(newStatus);
-
+  
       // When accepting or rejecting, open the modal for entering student email
       setIsModalOpen(true);
-
+  
       // Update the local state with the updated status
       setMedicalServiceRequests((prevRequests) =>
         prevRequests.map((request) =>
@@ -46,6 +48,7 @@ function MedicalServiceTable() {
       console.error("Error updating status: ", error);
     }
   };
+  
 
   const handleEmailSend = () => {
     let emailSubject = "";

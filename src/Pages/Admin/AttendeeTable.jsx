@@ -15,7 +15,7 @@ function AttendeeTable() {
   useEffect(() => {
     // Fetch data from the API endpoint
     axios
-      .get("http://localhost:5000/api/accommodation")
+      .get(`${process.env.REACT_APP_API_BASE_URL}/api/accommodation`)
       .then((response) => {
         setAttendees(response.data);
       })
@@ -23,6 +23,7 @@ function AttendeeTable() {
         console.error("Error fetching data: ", error);
       });
   }, []);
+  
 
   const handleSendEmail = () => {
     const emailServiceId = "service_dab7f58"; // Replace with your Email.js service ID

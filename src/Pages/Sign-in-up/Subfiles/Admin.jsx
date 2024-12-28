@@ -11,19 +11,17 @@ function Admin({ setSignin }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Check email and password (you would usually do this against a backend API)
     if (email === "admin@gmail.com" && password === "1234") {
-      // Successful login, navigate to the desired page
+      
       navigate("/adminpage");
 
-      // Show success alert
       Swal.fire({
         icon: "success",
         title: "Login Successful",
         text: "Welcome, Admin!",
       });
     } else {
-      // Invalid login, show error alert
+
       Swal.fire({
         icon: "error",
         title: "Login Failed",

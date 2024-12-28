@@ -17,15 +17,14 @@ function Leave() {
     responsiblePerson: "",
     contactNo: "",
   });
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/leave",
+        `${process.env.REACT_APP_API_BASE_URL}/api/leave`, // Use environment variable for base URL
         formData
-      );
-
+      ); 
+  
       Swal.fire("Success", "Leave request submitted successfully!", "success");
     } catch (error) {
       console.error("Error submitting leave request:", error);
@@ -36,6 +35,7 @@ function Leave() {
       );
     }
   };
+  
 
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });

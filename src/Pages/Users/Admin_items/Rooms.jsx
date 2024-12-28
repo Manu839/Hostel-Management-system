@@ -7,8 +7,7 @@ const Room = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const uri =
-          "mongodb+srv://cs50tharindu:CXE0jvEDEdfppIHE@cluster0.g3vaocn.mongodb.net/Buildings?retryWrites=true&w=majority";
+        const uri =process.env.MONGO_URI;
         const client = new MongoClient(uri);
         await client.connect();
         const db = client.db("Buildings");

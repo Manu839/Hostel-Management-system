@@ -29,13 +29,13 @@ function StatisticsTab() {
   const fetchData = async () => {
     try {
       const endpoints = [
-        "http://localhost:5000/api/accommodation",
-        "http://localhost:5000/api/inquiries",
-        "http://localhost:5000/api/cleaning",
-        "http://localhost:5000/api/medical",
-        "http://localhost:5000/api/clearance",
-        "http://localhost:5000/api/leave",
-        "http://localhost:5000/api/user/getAllUsers",
+        `${process.env.REACT_APP_API_BASE_URL}/api/accommodation`,
+        `${process.env.REACT_APP_API_BASE_URL}/api/inquiries`,
+        `${process.env.REACT_APP_API_BASE_URL}/api/cleaning`,
+        `${process.env.REACT_APP_API_BASE_URL}/api/medical`,
+        `${process.env.REACT_APP_API_BASE_URL}/api/clearance`,
+        `${process.env.REACT_APP_API_BASE_URL}/api/leave`,
+        `${process.env.REACT_APP_API_BASE_URL}/api/user/getAllUsers`,
       ];
 
       const counts = await Promise.all(

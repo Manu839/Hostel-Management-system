@@ -43,11 +43,10 @@ function Cleaning() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/cleaning",
+        `${process.env.REACT_APP_API_BASE_URL}/api/cleaning`, // Use environment variable for base URL
         formData
       );
-
-      console.log(response.data); // Log the response from the server
+      console.log(response.data); 
       Swal.fire(
         "Success!",
         "Cleaning request submitted successfully!",
@@ -58,7 +57,7 @@ function Cleaning() {
       Swal.fire("Error!", "Failed to submit cleaning request.", "error");
     }
   };
-
+  
   return (
     <div className="Cleaning">
       <div className="header">

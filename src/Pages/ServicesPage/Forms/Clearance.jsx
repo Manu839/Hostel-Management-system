@@ -17,7 +17,7 @@ function Clearance() {
     chair: false,
     table: false,
     cardboard: false,
-    extraKey: false, // Changed from 'key' to 'extraKey'
+    extraKey: false,
     handOverDate: "",
     otherNotes: "",
     certified: false,
@@ -30,14 +30,13 @@ function Clearance() {
       [name]: type === "checkbox" ? checked : value,
     });
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:5000/api/clearance", formData)
+      .post(`${process.env.REACT_APP_API_BASE_URL}/api/clearance`, formData) // Use environment variable for base URL
       .then((response) => {
-        // Handle success
-        console.log(response.data); // Log the response for debugging
+      
+        console.log(response.data); 
         Swal.fire(
           "Success!",
           "Clearance information submitted successfully!",
@@ -45,11 +44,11 @@ function Clearance() {
         );
       })
       .catch((error) => {
-        // Handle error
         console.error("Error:", error);
         Swal.fire("Error!", "Failed to submit clearance information!", "error");
       });
   };
+  
 
   return (
     <div className="clearance">

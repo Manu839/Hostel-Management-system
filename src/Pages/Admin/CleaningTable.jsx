@@ -10,11 +10,10 @@ function CleaningTable() {
   const [studentEmail, setStudentEmail] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [requestStatus, setRequestStatus] = useState("");
-
   useEffect(() => {
     // Fetch data from the API endpoint
     axios
-      .get("http://localhost:5000/api/cleaning")
+      .get(`${process.env.REACT_APP_API_BASE_URL}/api/cleaning`)
       .then((response) => {
         setCleaningRequests(response.data);
       })
@@ -22,20 +21,23 @@ function CleaningTable() {
         console.error("Error fetching data: ", error);
       });
   }, []);
-
+  
   const handleStatusChange = async (id, newStatus) => {
     try {
       // Update the status of the cleaning request in the backend
-      await axios.patch(`http://localhost:5000/api/cleaning/${id}/status`, {
-        status: newStatus,
-      });
-
+      await axios.patch(
+        `${process.env.REACT_APP_API_BASE_URL}/api/cleaning/${id}/status`,
+        {
+          status: newStatus,
+        }
+      );
+  
       // Set the request status for sending appropriate email message
       setRequestStatus(newStatus);
-
+  
       // When accepting or rejecting, open the modal for entering student email
       setIsModalOpen(true);
-
+  
       // Update the local state with the updated status
       setCleaningRequests((prevRequests) =>
         prevRequests.map((request) =>
@@ -46,6 +48,7 @@ function CleaningTable() {
       console.error("Error updating status: ", error);
     }
   };
+  
 
   const handleEmailSend = () => {
     let emailSubject = "";

@@ -14,7 +14,7 @@ function RoomInquiriesTable() {
   useEffect(() => {
     // Fetch data from the API endpoint
     axios
-      .get("http://localhost:5000/api/inquiries")
+      .get(`${process.env.REACT_APP_API_BASE_URL}/api/inquiries`)
       .then((response) => {
         setInquiries(response.data);
       })
@@ -22,20 +22,23 @@ function RoomInquiriesTable() {
         console.error("Error fetching data: ", error);
       });
   }, []);
-
+  
   const handleStatusChange = async (id, newStatus) => {
     try {
       // Update the status of the inquiry in the backend
-      await axios.patch(`http://localhost:5000/api/inquiries/${id}/status`, {
-        status: newStatus,
-      });
-
+      await axios.patch(
+        `${process.env.REACT_APP_API_BASE_URL}/api/inquiries/${id}/status`,
+        {
+          status: newStatus,
+        }
+      );
+  
       // Set the request status for sending appropriate email message
       setRequestStatus(newStatus);
-
+  
       // When accepting or rejecting, open the modal for entering student email
       setIsModalOpen(true);
-
+  
       // Update the local state with the updated status
       setInquiries((prevInquiries) =>
         prevInquiries.map((inquiry) =>
@@ -46,7 +49,7 @@ function RoomInquiriesTable() {
       console.error("Error updating status: ", error);
     }
   };
-
+  
   const handleEmailSend = () => {
     let emailSubject = "";
     let emailDescription = "";

@@ -18,7 +18,7 @@ function Signup({ setSignin }) {
     if (password === conPassword) {
       try {
         const response = await axios.post(
-          "http://localhost:5000/api/user/signup",
+          `${process.env.REACT_APP_API_BASE_URL}/api/user/signup`, 
           {
             name,
             email,
@@ -26,19 +26,16 @@ function Signup({ setSignin }) {
             password,
           }
         );
+        
 
         if (response.data.status === "success") {
-          // Show a success alert and then navigate to the home page
           Swal.fire("Signup Successful!", "", "success").then(() => {
-            // Navigate to the home page
             navigate("/home");
           });
         } else {
-          // Show an error alert
           Swal.fire("Oops...", "Sign up failed. Please try again.", "error");
         }
       } catch (error) {
-        // Show a network error alert
         Swal.fire(
           "Oops...",
           "Network error occurred. Please try again later.",
@@ -46,7 +43,6 @@ function Signup({ setSignin }) {
         );
       }
     } else {
-      // Show a mismatched password alert
       Swal.fire(
         "Oops...",
         "Confirm password and Password does not match!",
